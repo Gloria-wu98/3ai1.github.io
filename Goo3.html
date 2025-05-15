@@ -1,1301 +1,511 @@
-{\rtf1\ansi\ansicpg950\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset136 PingFangTC-Regular;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww12720\viewh7240\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google三大AI簡介</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* 使用 Inter 字體 */
+        }
+        .ai-button {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            min-height: 100px; /* 確保按鈕有基本高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem; /* 圓角 */
+        }
+        .ai-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .details-table th, .details-table td {
+            border: 1px solid #e2e8f0; /* 淺灰色邊框 */
+            padding: 12px;
+            text-align: left;
+            vertical-align: top; /* 確保內容頂部對齊 */
+        }
+        .details-table th {
+            background-color: #f7fafc; /* 非常淺的灰色背景 */
+        }
+        .details-table strong { /* 加粗比較項目中的標題 */
+            font-weight: bold;
+        }
+        /* 基本的彈出視窗樣式 */
+        .modal {
+            display: none; /* 預設隱藏 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 3% auto; /* 調整邊距讓視窗更靠上一些 */
+            padding: 0; /* 移除內邊距，由 modal-header 和 modal-body 控制 */
+            border: 1px solid #888;
+            width: 90%; /* 稍微加寬以容納比較表格 */
+            max-width: 1000px; /* 最大寬度也增加 */
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden; /* 確保圓角效果 */
+        }
+        .modal-header {
+            padding: 16px 24px; /* 標題區域的內邊距 */
+            font-size: 1.75rem; /* 標題字體大小 */
+            font-weight: bold;
+            color: #ffffff; /* 標題文字顏色預設為白色，可根據背景調整 */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            position: relative; /* 為了關閉按鈕定位 */
+            text-align: center; /* 標題文字置中 */
+        }
+        .modal-header .close-button { /* 將關閉按鈕移到標題欄內 */
+            position: absolute;
+            top: 50%; /* 垂直居中 */
+            transform: translateY(-50%); /* 垂直居中對齊 */
+            right: 20px;
+            color: #fff; /* 關閉按鈕顏色，確保在彩色背景上可見 */
+            font-size: 32px;
+            line-height: 1; /* 確保按鈕不會太高 */
+        }
+        .modal-header .close-button:hover {
+            color: #eee;
+        }
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="zh-TW">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Google
-\f1 \'a4\'54\'a4\'6a
-\f0 AI
-\f1 \'c2\'b2\'a4\'b6
-\f0 </title>\
-    <script src="https://cdn.tailwindcss.com"></script>\
-    <style>\
-        body \{\
-            font-family: 'Inter', sans-serif; /* 
-\f1 \'a8\'cf\'a5\'ce
-\f0  Inter 
-\f1 \'a6\'72\'c5\'e9
-\f0  */\
-        \}\
-        .ai-button \{\
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;\
-            min-height: 100px; /* 
-\f1 \'bd\'54\'ab\'4f\'ab\'f6\'b6\'73\'a6\'b3\'b0\'f2\'a5\'bb\'b0\'aa\'ab\'d7
-\f0  */\
-            display: flex;\
-            flex-direction: column;\
-            justify-content: center;\
-            align-items: center;\
-            border-radius: 0.5rem; /* 
-\f1 \'b6\'ea\'a8\'a4
-\f0  */\
-        \}\
-        .ai-button:hover \{\
-            transform: translateY(-5px);\
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);\
-        \}\
-        .details-table th, .details-table td \{\
-            border: 1px solid #e2e8f0; /* 
-\f1 \'b2\'4c\'a6\'c7\'a6\'e2\'c3\'e4\'ae\'d8
-\f0  */\
-            padding: 12px;\
-            text-align: left;\
-            vertical-align: top; /* 
-\f1 \'bd\'54\'ab\'4f\'a4\'ba\'ae\'65\'b3\'bb\'b3\'a1\'b9\'ef\'bb\'f4
-\f0  */\
-        \}\
-        .details-table th \{\
-            background-color: #f7fafc; /* 
-\f1 \'ab\'44\'b1\'60\'b2\'4c\'aa\'ba\'a6\'c7\'a6\'e2\'ad\'49\'b4\'ba
-\f0  */\
-        \}\
-        .details-table strong \{ /* 
-\f1 \'a5\'5b\'b2\'ca\'a4\'f1\'b8\'fb\'b6\'b5\'a5\'d8\'a4\'a4\'aa\'ba\'bc\'d0\'c3\'44
-\f0  */\
-            font-weight: bold;\
-        \}\
-        /* 
-\f1 \'b0\'f2\'a5\'bb\'aa\'ba\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1\'bc\'cb\'a6\'a1
-\f0  */\
-        .modal \{\
-            display: none; /* 
-\f1 \'b9\'77\'b3\'5d\'c1\'f4\'c2\'c3
-\f0  */\
-            position: fixed;\
-            z-index: 1000;\
-            left: 0;\
-            top: 0;\
-            width: 100%;\
-            height: 100%;\
-            overflow: auto;\
-            background-color: rgba(0,0,0,0.4);\
-        \}\
-        .modal-content \{\
-            background-color: #fefefe;\
-            margin: 3% auto; /* 
-\f1 \'bd\'d5\'be\'e3\'c3\'e4\'b6\'5a\'c5\'fd\'b5\'f8\'b5\'a1\'a7\'f3\'be\'61\'a4\'57\'a4\'40\'a8\'c7
-\f0  */\
-            padding: 0; /* 
-\f1 \'b2\'be\'b0\'a3\'a4\'ba\'c3\'e4\'b6\'5a\'a1\'41\'a5\'d1
-\f0  modal-header 
-\f1 \'a9\'4d
-\f0  modal-body 
-\f1 \'b1\'b1\'a8\'ee
-\f0  */\
-            border: 1px solid #888;\
-            width: 90%; /* 
-\f1 \'b5\'79\'b7\'4c\'a5\'5b\'bc\'65\'a5\'48\'ae\'65\'af\'c7\'a4\'f1\'b8\'fb\'aa\'ed\'ae\'e6
-\f0  */\
-            max-width: 1000px; /* 
-\f1 \'b3\'cc\'a4\'6a\'bc\'65\'ab\'d7\'a4\'5d\'bc\'57\'a5\'5b
-\f0  */\
-            border-radius: 8px;\
-            position: relative;\
-            overflow: hidden; /* 
-\f1 \'bd\'54\'ab\'4f\'b6\'ea\'a8\'a4\'ae\'c4\'aa\'47
-\f0  */\
-        \}\
-        .modal-header \{\
-            padding: 16px 24px; /* 
-\f1 \'bc\'d0\'c3\'44\'b0\'cf\'b0\'ec\'aa\'ba\'a4\'ba\'c3\'e4\'b6\'5a
-\f0  */\
-            font-size: 1.75rem; /* 
-\f1 \'bc\'d0\'c3\'44\'a6\'72\'c5\'e9\'a4\'6a\'a4\'70
-\f0  */\
-            font-weight: bold;\
-            color: #ffffff; /* 
-\f1 \'bc\'d0\'c3\'44\'a4\'e5\'a6\'72\'c3\'43\'a6\'e2\'b9\'77\'b3\'5d\'ac\'b0\'a5\'d5\'a6\'e2\'a1\'41\'a5\'69\'ae\'da\'be\'da\'ad\'49\'b4\'ba\'bd\'d5\'be\'e3
-\f0  */\
-            border-top-left-radius: 8px;\
-            border-top-right-radius: 8px;\
-            position: relative; /* 
-\f1 \'ac\'b0\'a4\'46\'c3\'f6\'b3\'ac\'ab\'f6\'b6\'73\'a9\'77\'a6\'ec
-\f0  */\
-            text-align: center; /* 
-\f1 \'bc\'d0\'c3\'44\'a4\'e5\'a6\'72\'b8\'6d\'a4\'a4
-\f0  */\
-        \}\
-        .modal-header .close-button \{ /* 
-\f1 \'b1\'4e\'c3\'f6\'b3\'ac\'ab\'f6\'b6\'73\'b2\'be\'a8\'ec\'bc\'d0\'c3\'44\'c4\'e6\'a4\'ba
-\f0  */\
-            position: absolute;\
-            top: 50%; /* 
-\f1 \'ab\'ab\'aa\'bd\'a9\'7e\'a4\'a4
-\f0  */\
-            transform: translateY(-50%); /* 
-\f1 \'ab\'ab\'aa\'bd\'a9\'7e\'a4\'a4\'b9\'ef\'bb\'f4
-\f0  */\
-            right: 20px;\
-            color: #fff; /* 
-\f1 \'c3\'f6\'b3\'ac\'ab\'f6\'b6\'73\'c3\'43\'a6\'e2\'a1\'41\'bd\'54\'ab\'4f\'a6\'62\'b1\'6d\'a6\'e2\'ad\'49\'b4\'ba\'a4\'57\'a5\'69\'a8\'a3
-\f0  */\
-            font-size: 32px;\
-            line-height: 1; /* 
-\f1 \'bd\'54\'ab\'4f\'ab\'f6\'b6\'73\'a4\'a3\'b7\'7c\'a4\'d3\'b0\'aa
-\f0  */\
-        \}\
-        .modal-header .close-button:hover \{\
-            color: #eee;\
-        \}\
-\
-        .modal-body \{\
-            padding: 20px; /* 
-\f1 \'a4\'ba\'ae\'65\'b0\'cf\'b0\'ec\'aa\'ba\'a4\'ba\'c3\'e4\'b6\'5a
-\f0  */\
-            max-height: 75vh; /* 
-\f1 \'bd\'d5\'be\'e3\'b3\'cc\'a4\'6a\'b0\'aa\'ab\'d7\'a5\'48\'be\'41\'c0\'b3\'bc\'d0\'c3\'44\'c4\'e6
-\f0  */\
-            overflow-y: auto;\
-            position: relative; /* 
-\f1 \'ac\'b0\'a4\'46\'af\'42\'a4\'f4\'a6\'4c
-\f0  */\
-            /* 
-\f1 \'af\'42\'a4\'f4\'a6\'4c\'ac\'db\'c3\'f6\'bc\'cb\'a6\'a1\'b2\'be\'a6\'dc
-\f0  ::before 
-\f1 \'b0\'b0\'a4\'b8\'af\'c0
-\f0  */\
-        \}\
-        /* 
-\f1 \'af\'42\'a4\'f4\'a6\'4c\'bc\'cb\'a6\'a1
-\f0  */\
-        .modal-body::before \{\
-            content: "";\
-            position: absolute;\
-            top: 0;\
-            left: 0;\
-            width: 100%;\
-            height: 100%;\
-            /*\
-            
-\f1 \'ad\'ab\'ad\'6e\'b4\'a3\'a5\'dc\'a1\'47\'bd\'d0\'b1\'4e\'a4\'55\'ad\'b1\'aa\'ba
-\f0  background-image URL 
-\f1 \'b4\'c0\'b4\'ab\'a6\'a8\'b1\'7a
-\f0  "1 Gloria logo.png" 
-\f1 \'b9\'cf\'a4\'f9\'aa\'ba\'b9\'ea\'bb\'da\'b8\'f4\'ae\'7c\'a9\'ce\'a5\'69\'a4\'bd\'b6\'7d\'a6\'73\'a8\'fa\'aa\'ba\'ba\'f4\'a7\'7d\'a1\'43
-\f0 \
-            
-\f1 \'a8\'d2\'a6\'70\'a1\'41\'a6\'70\'aa\'47\'b1\'7a\'aa\'ba\'b9\'cf\'a4\'f9\'a6\'62
-\f0  'images' 
-\f1 \'b8\'ea\'ae\'c6\'a7\'a8\'a4\'a4\'a1\'41\'b8\'f4\'ae\'7c\'a5\'69\'af\'e0\'ac\'4f
-\f0  'images/1_Gloria_logo.png'\
-            
-\f1 \'a9\'ce\'aa\'cc\'ac\'4f\'a4\'40\'ad\'d3\'a7\'b9\'be\'e3\'aa\'ba
-\f0  URL
-\f1 \'a1\'41\'a8\'d2\'a6\'70\'a1\'47
-\f0 'https://your-website.com/path/to/1_Gloria_logo.png'\
-            */\
-            background-image: url('YOUR_GLORIA_LOGO_URL_HERE/1_Gloria_logo.png'); /* 
-\f1 \'bd\'d0\'b4\'c0\'b4\'ab\'a6\'b9\'b3\'42\'aa\'ba
-\f0  URL */\
-            background-size: 200px auto; /* 
-\f1 \'b1\'b1\'a8\'ee\'af\'42\'a4\'f4\'a6\'4c\'b9\'cf\'a4\'f9\'a4\'6a\'a4\'70\'a1\'41\'ab\'4f\'ab\'f9\'a4\'f1\'a8\'d2
-\f0  */\
-            background-position: center center;\
-            background-repeat: no-repeat;\
-            opacity: 0.15; /* 
-\f1 \'af\'42\'a4\'f4\'a6\'4c\'b3\'7a\'a9\'fa\'ab\'d7\'bd\'d5\'be\'e3
-\f0  */\
-            z-index: 0; /* 
-\f1 \'bd\'54\'ab\'4f\'af\'42\'a4\'f4\'a6\'4c\'a6\'62\'a4\'ba\'ae\'65\'a4\'55\'a4\'e8\'a1\'41\'a6\'fd\'b0\'aa\'a9\'f3
-\f0  modal-body 
-\f1 \'ad\'49\'b4\'ba\'a6\'e2
-\f0  */\
-            pointer-events: none; /* 
-\f1 \'c5\'fd\'af\'42\'a4\'f4\'a6\'4c\'a4\'a3\'bc\'76\'c5\'54\'a4\'ba\'ae\'65\'a4\'ac\'b0\'ca
-\f0  */\
-        \}\
-\
-        .comparison-header \{ /* 
-\f1 \'a4\'f1\'b8\'fb\'aa\'ed\'ae\'e6\'a4\'ba\'aa\'ba\'bc\'d0\'c3\'44\'a1\'41\'ab\'4f\'ab\'f9\'ad\'ec\'bc\'cb
-\f0  */\
-            font-size: 1.5em; /* 24px */\
-            font-weight: 600;\
-            margin-bottom: 0.5em;\
-        \}\
-        .official-link \{\
-            display: block;\
-            text-align: center;\
-            margin-bottom: 1.5rem;\
-            font-size: 1.1rem;\
-            color: #2563eb; /* Tailwind blue-600 */\
-            text-decoration: underline;\
-        \}\
-        .official-link:hover \{\
-            color: #1d4ed8; /* Tailwind blue-700 */\
-        \}\
-\
-        /* 
-\f1 \'ab\'f6\'b6\'73\'a9\'4d\'bc\'d0\'c3\'44\'aa\'ba\'af\'53\'a9\'77\'ad\'49\'b4\'ba\'a6\'e2
-\f0  */\
-        .notebooklm-bg \{ background-color: #E9D5FF; \} /* Tailwind purple-200 */\
-        .notebooklm-title-bg \{ background-color: #D8B4FE; color: #581C87; \} /* Tailwind purple-300, 
-\f1 \'b2\'60\'b5\'b5\'a6\'e2\'a4\'e5\'a6\'72
-\f0  */\
-        .gemini-bg \{ background-color: #A7F3D0; \} /* Tailwind emerald-200 */\
-        .gemini-title-bg \{ background-color: #6EE7B7; color: #047857; \} /* Tailwind emerald-300, 
-\f1 \'b2\'60\'ba\'f1\'a6\'e2\'a4\'e5\'a6\'72
-\f0  */\
-        .aistudio-bg \{ background-color: #BFDBFE; \} /* Tailwind blue-200 */\
-        .aistudio-title-bg \{ background-color: #93C5FD; color: #1E40AF; \} /* Tailwind blue-300, 
-\f1 \'b2\'60\'c2\'c5\'a6\'e2\'a4\'e5\'a6\'72
-\f0  */\
-\
-    </style>\
-</head>\
-<body class="bg-gray-100 text-gray-800">\
-\
-    <div id="main-container" class="container mx-auto p-4 md:p-8">\
-        <header class="text-center mb-8">\
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-700 mb-4">Google
-\f1 \'a4\'54\'a4\'6a
-\f0 AI
-\f1 \'c2\'b2\'a4\'b6
-\f0 </h1>\
-            <p class="text-xl md:text-2xl font-bold bg-purple-100 py-3 px-2 rounded-md">
-\f1 \'ba\'f4\'ad\'b6\'be\'d6\'a6\'b3\'aa\'cc\'a1\'47
-\f0 Gloria
-\f1 \'a7\'64\'a8\'71\'c4\'f5\'a6\'d1\'ae\'76\'a1\'41
-\f0 Google
-\f1 \'bb\'7b\'c3\'d2\'c1\'bf\'ae\'76
-\f0 ,
-\f1 \'ad\'5e\'a4\'e5\'ad\'dd\'a5\'78\'bb\'79\'b1\'d0\'ae\'76
-\f0 </p>\
-        </header>\
-\
-        <section id="selection-area" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">\
-            <button onclick="showDetails('notebooklm_comparison')" class="ai-button notebooklm-bg p-6 shadow-lg">\
-                <h2 class="text-2xl font-semibold text-purple-700">NotebookLM</h2>\
-            </button>\
-            <button onclick="showDetails('gemini_comparison')" class="ai-button gemini-bg p-6 shadow-lg">\
-                <h2 class="text-2xl font-semibold text-emerald-700">Gemini</h2>\
-            </button>\
-            <button onclick="showDetails('aistudio')" class="ai-button aistudio-bg p-6 shadow-lg">\
-                <h2 class="text-2xl font-semibold text-blue-700">Google AI Studio</h2>\
-            </button>\
-        </section>\
-    </div>\
-\
-    <div id="details-modal" class="modal">\
-        <div class="modal-content">\
-            <div id="modal-header" class="modal-header">\
-                <span id="modal-title-text">AI 
-\f1 \'b8\'d4\'b2\'d3\'b8\'ea\'b0\'54
-\f0 </span> <span class="close-button" onclick="closeDetailsModal()">&times;</span>\
-            </div>\
-            <div id="modal-body" class="modal-body">\
-                </div>\
-            <div class="mt-0 p-4 text-center border-t border-gray-200 bg-white rounded-b-lg"> <button onclick="closeDetailsModal()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">\
-                    
-\f1 \'aa\'f0\'a6\'5e
-\f0 \
-                </button>\
-            </div>\
-        </div>\
-    </div>\
-\
-    <script>\
-        // AI 
-\f1 \'b8\'d4\'b2\'d3\'b8\'ea\'b0\'54\'a4\'ba\'ae\'65
-\f0 \
-        const aiData = \{\
-            notebooklm_comparison: \{\
-                title: "NotebookLM vs NotebookLM Plus 
-\f1 \'a4\'f1\'b8\'fb
-\f0 ",\
-                headerClass: "notebooklm-title-bg", // 
-\f1 \'a5\'ce\'a9\'f3\'bc\'d0\'c3\'44\'ad\'49\'b4\'ba
-\f0 \
-                content: `\
-                    <a href="https://notebooklm.google/" target="_blank" rel="noopener noreferrer" class="official-link">
-\f1 \'ab\'65\'a9\'b9
-\f0  NotebookLM 
-\f1 \'a9\'78\'a4\'e8\'ba\'f4\'af\'b8
-\f0 </a>\
-                    <table class="w-full details-table">\
-                        <thead>\
-                            <tr>\
-                                <th class="w-1/5">
-\f1 \'b6\'b5\'a5\'d8
-\f0 </th>\
-                                <th class="w-2/5 comparison-header text-purple-600">NotebookLM (
-\f1 \'bc\'d0\'b7\'c7\'aa\'a9
-\f0 )</th>\
-                                <th class="w-2/5 comparison-header text-purple-800">NotebookLM Plus</th>\
-                            </tr>\
-                        </thead>\
-                        <tbody>\
-                            <tr>\
-                                <td><strong>
-\f1 \'c2\'b2\'a4\'b6
-\f0 </strong></td>\
+        .modal-body {
+            padding: 20px; /* 內容區域的內邊距 */
+            max-height: 75vh; /* 調整最大高度以適應標題欄 */
+            overflow-y: auto;
+            position: relative; /* 為了浮水印 */
+            /* 浮水印相關樣式移至 ::before 偽元素 */
+        }
+        /* 浮水印樣式 */
+        .modal-body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /*
+            重要提示：請將下面的 background-image URL 替換成您 "1 Gloria logo.png" 圖片的實際路徑或可公開存取的網址。
+            例如，如果您的圖片在 'images' 資料夾中，路徑可能是 'images/1_Gloria_logo.png'
+            或者是一個完整的 URL，例如：'https://your-website.com/path/to/1_Gloria_logo.png'
+            */
+            background-image: url('YOUR_GLORIA_LOGO_URL_HERE/1_Gloria_logo.png'); /* 請替換此處的 URL */
+            background-size: 200px auto; /* 控制浮水印圖片大小，保持比例 */
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.15; /* 浮水印透明度調整 */
+            z-index: 0; /* 確保浮水印在內容下方，但高於 modal-body 背景色 */
+            pointer-events: none; /* 讓浮水印不影響內容互動 */
+        }
+
+        .comparison-header { /* 比較表格內的標題，保持原樣 */
+            font-size: 1.5em; /* 24px */
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+        .official-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #2563eb; /* Tailwind blue-600 */
+            text-decoration: underline;
+        }
+        .official-link:hover {
+            color: #1d4ed8; /* Tailwind blue-700 */
+        }
+
+        /* 按鈕和標題的特定背景色 */
+        .notebooklm-bg { background-color: #E9D5FF; } /* Tailwind purple-200 */
+        .notebooklm-title-bg { background-color: #D8B4FE; color: #581C87; } /* Tailwind purple-300, 深紫色文字 */
+        .gemini-bg { background-color: #A7F3D0; } /* Tailwind emerald-200 */
+        .gemini-title-bg { background-color: #6EE7B7; color: #047857; } /* Tailwind emerald-300, 深綠色文字 */
+        .aistudio-bg { background-color: #BFDBFE; } /* Tailwind blue-200 */
+        .aistudio-title-bg { background-color: #93C5FD; color: #1E40AF; } /* Tailwind blue-300, 深藍色文字 */
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="main-container" class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-700 mb-4">Google三大AI簡介</h1>
+            <p class="text-xl md:text-2xl font-bold bg-purple-100 py-3 px-2 rounded-md">網頁擁有者：Gloria吳秀蘭老師，Google認證講師,英文兼台語教師</p>
+        </header>
+
+        <section id="selection-area" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <button onclick="showDetails('notebooklm_comparison')" class="ai-button notebooklm-bg p-6 shadow-lg">
+                <h2 class="text-2xl font-semibold text-purple-700">NotebookLM</h2>
+            </button>
+            <button onclick="showDetails('gemini_comparison')" class="ai-button gemini-bg p-6 shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-700">Gemini</h2>
+            </button>
+            <button onclick="showDetails('aistudio')" class="ai-button aistudio-bg p-6 shadow-lg">
+                <h2 class="text-2xl font-semibold text-blue-700">Google AI Studio</h2>
+            </button>
+        </section>
+    </div>
+
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <div id="modal-header" class="modal-header">
+                <span id="modal-title-text">AI 詳細資訊</span> <span class="close-button" onclick="closeDetailsModal()">&times;</span>
+            </div>
+            <div id="modal-body" class="modal-body">
+                </div>
+            <div class="mt-0 p-4 text-center border-t border-gray-200 bg-white rounded-b-lg"> <button onclick="closeDetailsModal()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI 詳細資訊內容
+        const aiData = {
+            notebooklm_comparison: {
+                title: "NotebookLM vs NotebookLM Plus 比較",
+                headerClass: "notebooklm-title-bg", // 用於標題背景
+                content: `
+                    <a href="https://notebooklm.google/" target="_blank" rel="noopener noreferrer" class="official-link">前往 NotebookLM 官方網站</a>
+                    <table class="w-full details-table">
+                        <thead>
+                            <tr>
+                                <th class="w-1/5">項目</th>
+                                <th class="w-2/5 comparison-header text-purple-600">NotebookLM (標準版)</th>
+                                <th class="w-2/5 comparison-header text-purple-800">NotebookLM Plus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>簡介</strong></td>
+                                <td>個人使用者無須付費即可開始使用。一款由 Google AI 開發的筆記研究助理，採用最新 Gemini 模型，旨在幫助使用者理解複雜資訊、產生新想法並加速研究過程。能讓您「與您的文件對話」。</td>
+                                <td>NotebookLM 的增強版本，除了 NotebookLM 的完整功能，還可享有更多進階福利，專為需要處理更大量資料、進行更複雜分析或協同工作的專業研究人員、團隊和企業設計。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>核心功能/特色</strong></td>
                                 <td>
-\f1 \'ad\'d3\'a4\'48\'a8\'cf\'a5\'ce\'aa\'cc\'b5\'4c\'b6\'b7\'a5\'49\'b6\'4f\'a7\'59\'a5\'69\'b6\'7d\'a9\'6c\'a8\'cf\'a5\'ce\'a1\'43\'a4\'40\'b4\'da\'a5\'d1
-\f0  Google AI 
-\f1 \'b6\'7d\'b5\'6f\'aa\'ba\'b5\'a7\'b0\'4f\'ac\'e3\'a8\'73\'a7\'55\'b2\'7a\'a1\'41\'b1\'c4\'a5\'ce\'b3\'cc\'b7\'73
-\f0  Gemini 
-\f1 \'bc\'d2\'ab\'ac\'a1\'41\'a6\'ae\'a6\'62\'c0\'b0\'a7\'55\'a8\'cf\'a5\'ce\'aa\'cc\'b2\'7a\'b8\'d1\'bd\'c6\'c2\'f8\'b8\'ea\'b0\'54\'a1\'42\'b2\'a3\'a5\'cd\'b7\'73\'b7\'51\'aa\'6b\'a8\'c3\'a5\'5b\'b3\'74\'ac\'e3\'a8\'73\'b9\'4c\'b5\'7b\'a1\'43\'af\'e0\'c5\'fd\'b1\'7a\'a1\'75\'bb\'50\'b1\'7a\'aa\'ba\'a4\'e5\'a5\'f3\'b9\'ef\'b8\'dc\'a1\'76\'a1\'43
-\f0 </td>\
-                                <td>NotebookLM 
-\f1 \'aa\'ba\'bc\'57\'b1\'6a\'aa\'a9\'a5\'bb\'a1\'41\'b0\'a3\'a4\'46
-\f0  NotebookLM 
-\f1 \'aa\'ba\'a7\'b9\'be\'e3\'a5\'5c\'af\'e0\'a1\'41\'c1\'d9\'a5\'69\'a8\'c9\'a6\'b3\'a7\'f3\'a6\'68\'b6\'69\'b6\'a5\'ba\'d6\'a7\'51\'a1\'41\'b1\'4d\'ac\'b0\'bb\'dd\'ad\'6e\'b3\'42\'b2\'7a\'a7\'f3\'a4\'6a\'b6\'71\'b8\'ea\'ae\'c6\'a1\'42\'b6\'69\'a6\'e6\'a7\'f3\'bd\'c6\'c2\'f8\'a4\'c0\'aa\'52\'a9\'ce\'a8\'f3\'a6\'50\'a4\'75\'a7\'40\'aa\'ba\'b1\'4d\'b7\'7e\'ac\'e3\'a8\'73\'a4\'48\'ad\'fb\'a1\'42\'b9\'ce\'b6\'a4\'a9\'4d\'a5\'f8\'b7\'7e\'b3\'5d\'ad\'70\'a1\'43
-\f0 </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'ae\'d6\'a4\'df\'a5\'5c\'af\'e0
-\f0 /
-\f1 \'af\'53\'a6\'e2
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'b1\'c4\'a5\'ce\'b3\'cc\'b7\'73
-\f0  Gemini 
-\f1 \'bc\'d2\'ab\'ac\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'57\'b6\'c7
-\f0  PDF
-\f1 \'a1\'42\'ba\'f4\'af\'b8\'a1\'42
-\f0 Google 
-\f1 \'a4\'e5\'a5\'f3\'a9\'4d\'c2\'b2\'b3\'f8\'a1\'42
-\f0 YouTube 
-\f1 \'ba\'f4\'a7\'7d\'b5\'a5\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'73\'a7\'40\'a4\'40\'c1\'e4\'a6\'a1\'ba\'4b\'ad\'6e\'a1\'42\'b1\'60\'a8\'a3\'b0\'dd\'c3\'44\'a1\'42\'ae\'c9\'b6\'a1\'b6\'62\'a9\'4d\'c2\'b2\'a4\'b6\'a4\'e5\'a5\'f3\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'bb\'79\'ad\'b5\'ba\'4b\'ad\'6e\'a1\'47
-\f0 </strong>
-\f1 \'a5\'69\'bf\'ef\'be\'dc\'bb\'79\'a8\'a5\'a4\'ce\'a6\'db\'ad\'71\'bb\'79\'ad\'b5\'bb\'50\'ba\'4b\'ad\'6e\'bc\'cb\'a6\'a1\'a1\'41\'c0\'48\'ae\'c9\'c0\'48\'a6\'61\'b2\'e2\'c5\'a5\'a4\'ba\'ae\'65\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a4\'df\'b4\'bc\'b9\'cf\'a1\'47
-\f0 </strong>
-\f1 \'b9\'cf\'b9\'b3\'a4\'c6\'a9\'b5\'a6\'f9\'be\'c7\'b2\'df\'a1\'41\'b5\'f8\'c4\'b1\'a4\'c6\'be\'e3\'b2\'7a\'ab\'e4\'ba\'fc\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'b1\'b4\'af\'c1\'a8\'d3\'b7\'bd\'a1\'47
-\f0 </strong>
-\f1 \'a4\'40\'c1\'e4\'b6\'d7\'a4\'4a\'ac\'db\'c3\'f6\'aa\'ba\'a9\'b5\'a6\'f9\'b8\'ea\'ae\'c6\'a8\'d3\'b7\'bd\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b4\'a3\'b0\'dd\'b4\'4e\'af\'e0\'c0\'f2\'b1\'6f\'a7\'f3\'b2\'60\'a4\'4a\'aa\'ba\'a4\'c0\'aa\'52\'b5\'b2\'aa\'47\'a1\'41\'b5\'aa\'ae\'d7\'c1\'d9\'b7\'7c\'aa\'fe\'a4\'57\'a4\'de\'a5\'ce\'a4\'ba\'ae\'65\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b5\'a7\'b0\'4f\'a5\'bb\'b7\'a7\'a9\'c0\'a1\'47\'b2\'d5\'c2\'b4\'a8\'d3\'b7\'bd\'a1\'42\'b5\'a7\'b0\'4f\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'de\'a4\'e5\'b0\'6c\'c2\'dc\'a1\'47\'a6\'db\'b0\'ca\'b0\'6c\'c2\'dc\'b0\'d1\'a6\'d2\'a8\'d3\'b7\'bd\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li><strong>
-\f1 \'a5\'5d\'a7\'74\'a9\'d2\'a6\'b3
-\f0  NotebookLM (
-\f1 \'bc\'d0\'b7\'c7\'aa\'a9
-\f0 ) 
-\f1 \'aa\'ba\'a7\'b9\'be\'e3\'a5\'5c\'af\'e0\'a1\'41\'a8\'c3\'a8\'c9\'a6\'b3\'a1\'47
-\f0 </strong></li>\
-                                        <li><strong>
-\f1 \'a5\'ce\'b6\'71\'b4\'a3\'a4\'c9\'a1\'47
-\f0 </strong>
-\f1 \'a8\'43\'ad\'d3\'b5\'a7\'b0\'4f\'a5\'bb\'aa\'ba\'bb\'79\'ad\'b5\'ba\'4b\'ad\'6e\'ae\'c9\'aa\'f8\'a1\'42\'b5\'a7\'b0\'4f\'a5\'bb\'bc\'c6\'b6\'71\'a1\'42\'ac\'64\'b8\'df\'a6\'b8\'bc\'c6\'a9\'4d\'a8\'d3\'b7\'bd\'bc\'c6\'b6\'71\'a4\'57\'ad\'ad\'bc\'57\'a5\'5b
-\f0  <strong>5 
-\f1 \'ad\'bf
-\f0 </strong>
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a6\'db\'ad\'71\'a6\'5e\'c2\'d0\'a1\'47
-\f0 </strong>
-\f1 \'a5\'69\'a6\'db\'ad\'71\'b5\'a7\'b0\'4f\'a5\'bb\'a6\'5e\'c2\'d0\'aa\'ba\'ad\'b7\'ae\'e6
-\f0  (
-\f1 \'a8\'d2\'a6\'70\'a1\'47\'a5\'bf\'a6\'a1\'a1\'42\'ab\'44\'a5\'bf\'a6\'a1
-\f0 ) 
-\f1 \'a9\'4d\'aa\'f8\'ab\'d7
-\f0  (
-\f1 \'a8\'d2\'a6\'70\'a1\'47\'c2\'b2\'b5\'75\'a1\'42\'b8\'d4\'b2\'d3
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'b9\'ce\'b6\'a4\'a8\'f3\'a7\'40\'a1\'47
-\f0 </strong>
-\f1 \'ab\'d8\'a5\'df\'b9\'ce\'b6\'a4\'a6\'40\'a5\'ce\'b5\'a7\'b0\'4f\'a5\'bb\'a1\'41\'a4\'e8\'ab\'4b\'a6\'a8\'ad\'fb\'a6\'40\'a6\'50\'bd\'73\'bf\'e8\'bb\'50\'a6\'73\'a8\'fa\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a5\'ce\'b6\'71\'a4\'c0\'aa\'52\'a1\'47
-\f0 </strong>
-\f1 \'a8\'fa\'b1\'6f\'b9\'ce\'b6\'a4\'a9\'ce\'ad\'d3\'a4\'48\'b5\'a7\'b0\'4f\'a5\'bb\'aa\'ba\'a8\'cf\'a5\'ce\'b1\'a1\'aa\'70\'a4\'c0\'aa\'52\'b8\'ea\'ae\'c6\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'c3\'42\'a5\'7e\'c1\'f4\'a8\'70\'c5\'76\'bb\'50\'a6\'77\'a5\'fe\'a9\'ca\'b3\'5d\'a9\'77\'a1\'47
-\f0 </strong>
-\f1 \'b4\'a3\'a8\'d1\'a7\'f3\'b6\'69\'b6\'a5\'aa\'ba\'b8\'ea\'ae\'c6\'ab\'4f\'c5\'40\'bb\'50\'ba\'de\'b2\'7a\'bf\'ef\'b6\'b5\'a1\'43
-\f0 </li>\
-                                        <li>(
-\f1 \'a5\'69\'af\'e0\'a5\'5d\'a7\'74
-\f0 ) 
-\f1 \'c0\'75\'a5\'fd\'ab\'c8\'a4\'e1\'a4\'e4\'b4\'a9\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                             <tr>\
-                                <td><strong>
-\f1 \'bb\'f9\'ae\'e6
-\f0 </strong></td>\
+                                    <ul class="list-disc list-inside">
+                                        <li>採用最新 Gemini 模型。</li>
+                                        <li>上傳 PDF、網站、Google 文件和簡報、YouTube 網址等。</li>
+                                        <li>製作一鍵式摘要、常見問題、時間軸和簡介文件。</li>
+                                        <li><strong>語音摘要：</strong>可選擇語言及自訂語音與摘要樣式，隨時隨地聆聽內容。</li>
+                                        <li><strong>心智圖：</strong>圖像化延伸學習，視覺化整理思緒。</li>
+                                        <li><strong>探索來源：</strong>一鍵匯入相關的延伸資料來源。</li>
+                                        <li>提問就能獲得更深入的分析結果，答案還會附上引用內容。</li>
+                                        <li>筆記本概念：組織來源、筆記。</li>
+                                        <li>引文追蹤：自動追蹤參考來源。</li>
+                                    </ul>
+                                </td>
                                 <td>
-\f1 \'ad\'d3\'a4\'48\'a8\'cf\'a5\'ce\'aa\'cc\'a7\'4b\'b6\'4f\'a1\'43
-\f0 </td>\
+                                    <ul class="list-disc list-inside">
+                                        <li><strong>包含所有 NotebookLM (標準版) 的完整功能，並享有：</strong></li>
+                                        <li><strong>用量提升：</strong>每個筆記本的語音摘要時長、筆記本數量、查詢次數和來源數量上限增加 <strong>5 倍</strong>。</li>
+                                        <li><strong>自訂回覆：</strong>可自訂筆記本回覆的風格 (例如：正式、非正式) 和長度 (例如：簡短、詳細)。</li>
+                                        <li><strong>團隊協作：</strong>建立團隊共用筆記本，方便成員共同編輯與存取。</li>
+                                        <li><strong>用量分析：</strong>取得團隊或個人筆記本的使用情況分析資料。</li>
+                                        <li><strong>額外隱私權與安全性設定：</strong>提供更進階的資料保護與管理選項。</li>
+                                        <li>(可能包含) 優先客戶支援。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td><strong>價格</strong></td>
+                                <td>個人使用者免費。</td>
+                                <td>付費訂閱服務 (具體價格請參考官方說明)。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>限制</strong></td>
                                 <td>
-\f1 \'a5\'49\'b6\'4f\'ad\'71\'be\'5c\'aa\'41\'b0\'c8
-\f0  (
-\f1 \'a8\'e3\'c5\'e9\'bb\'f9\'ae\'e6\'bd\'d0\'b0\'d1\'a6\'d2\'a9\'78\'a4\'e8\'bb\'a1\'a9\'fa
-\f0 )
-\f1 \'a1\'43
-\f0 </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'ad\'ad\'a8\'ee
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e
-\f0  Google 
-\f1 \'b1\'62\'a4\'e1\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a5\'44\'ad\'6e\'a4\'e4\'b4\'a9\'ad\'5e\'a4\'e5\'a1\'41\'a8\'e4\'a5\'4c\'bb\'79\'a8\'a5\'a4\'e4\'b4\'a9\'ab\'f9\'c4\'f2\'a7\'ef\'b6\'69\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bc\'d0\'b7\'c7\'aa\'a9\'a5\'ce\'b6\'71\'ad\'ad\'a8\'ee
-\f0  (
-\f1 \'a8\'d2\'a6\'70\'a1\'47\'a8\'d3\'b7\'bd\'bc\'c6\'b6\'71\'a1\'42\'c1\'60\'c0\'78\'a6\'73\'aa\'c5\'b6\'a1\'b5\'a5\'a1\'41\'bd\'d0\'b0\'d1\'a6\'d2\'a9\'78\'a4\'e8\'b3\'cc\'b7\'73\'bb\'a1\'a9\'fa
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>AI 
-\f1 \'a5\'cd\'a6\'a8\'a4\'ba\'ae\'65\'bb\'dd\'a8\'c6\'b9\'ea\'ac\'64\'ae\'d6\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e
-\f0  Google 
-\f1 \'b1\'62\'a4\'e1\'a8\'c3\'ad\'71\'be\'5c
-\f0  Plus 
-\f1 \'a4\'e8\'ae\'d7\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b9\'ef\'b5\'77\'c5\'e9\'a9\'ce\'ba\'f4\'b8\'f4\'c0\'f4\'b9\'d2\'a5\'69\'af\'e0\'a6\'b3\'a7\'f3\'b0\'aa\'ad\'6e\'a8\'44
-\f0  (
-\f1 \'b5\'f8\'a8\'e3\'c5\'e9\'a5\'5c\'af\'e0\'a6\'d3\'a9\'77
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b6\'69\'b6\'a5\'a5\'5c\'af\'e0\'a5\'69\'af\'e0\'bb\'dd\'ad\'6e\'a4\'40\'a9\'77\'aa\'ba\'be\'c7\'b2\'df\'a6\'b1\'bd\'75\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'b4\'bb\'dd\'aa\'60\'b7\'4e
-\f0  AI 
-\f1 \'ad\'db\'b2\'7a\'bb\'50\'b8\'ea\'ae\'c6\'c1\'f4\'a8\'70\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'be\'de\'a7\'40\'bb\'a1\'a9\'fa
-\f0 </strong></td>\
-                                <td>\
-                                    <ol class="list-decimal list-inside">\
-                                        <li>
-\f1 \'b5\'6e\'a4\'4a
-\f0  notebooklm.google.com
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'ab\'d8\'a5\'df\'b5\'a7\'b0\'4f\'a5\'bb\'a1\'41\'b7\'73\'bc\'57\'a8\'d3\'b7\'bd
-\f0  (
-\f1 \'a4\'e5\'a5\'f3\'a1\'42\'ba\'f4\'a7\'7d\'b5\'a5
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'e5\'a5\'f3\'b3\'42\'b2\'7a\'ab\'e1\'a1\'41\'a5\'69\'b0\'77\'b9\'ef\'a8\'d3\'b7\'bd\'b4\'a3\'b0\'dd\'a1\'42\'ad\'6e\'a8\'44\'ba\'4b\'ad\'6e\'a1\'42\'bb\'73\'a7\'40\'b5\'a7\'b0\'4f\'a1\'42\'b2\'a3\'a5\'cd\'bb\'79\'ad\'b5\'ba\'4b\'ad\'6e\'a1\'42\'ab\'d8\'a5\'df\'a4\'df\'b4\'bc\'b9\'cf\'b5\'a5\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a7\'51\'a5\'ce\'a1\'75\'b1\'b4\'af\'c1\'a8\'d3\'b7\'bd\'a1\'76\'a5\'5c\'af\'e0\'a7\'d6\'b3\'74\'a5\'5b\'a4\'4a\'ac\'db\'c3\'f6\'b8\'ea\'ae\'c6\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b0\'76\'bf\'ef\'a6\'b3\'a5\'ce\'a6\'5e\'c0\'b3\'bb\'50\'b5\'a7\'b0\'4f\'a1\'43
-\f0 </li>\
-                                    </ol>\
-                                </td>\
-                                <td>\
-                                    <ol class="list-decimal list-inside">\
-                                        <li>
-\f1 \'c3\'fe\'a6\'fc\'bc\'d0\'b7\'c7\'aa\'a9\'be\'de\'a7\'40\'ac\'79\'b5\'7b\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'c3\'42\'a5\'7e\'aa\'ba\'b9\'ce\'b6\'a4\'a8\'f3\'a7\'40\'b3\'5d\'a9\'77\'bb\'50\'ba\'de\'b2\'7a\'a5\'5c\'af\'e0\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a8\'cf\'a5\'ce\'b6\'71\'a4\'c0\'aa\'52\'bc\'c6\'be\'da\'ac\'64\'be\'5c\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b3\'5d\'a9\'77\'a6\'db\'ad\'71\'a6\'5e\'c2\'d0\'ad\'b7\'ae\'e6\'bb\'50\'aa\'f8\'ab\'d7\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'ba\'de\'b2\'7a\'b6\'69\'b6\'a5\'c1\'f4\'a8\'70\'c5\'76\'bb\'50\'a6\'77\'a5\'fe\'a9\'ca\'b3\'5d\'a9\'77\'a1\'43
-\f0 </li>\
-                                    </ol>\
-                                </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'c0\'b3\'a5\'ce\'ab\'d8\'c4\'b3
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'ad\'d3\'a4\'48\'be\'c7\'b3\'4e\'ac\'e3\'a8\'73\'a1\'42\'a5\'ab\'b3\'f5\'a4\'c0\'aa\'52\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'ad\'d3\'a4\'48\'a4\'ba\'ae\'65\'b3\'d0\'a7\'40\'a1\'42\'be\'c7\'b2\'df\'b5\'a7\'b0\'4f\'bb\'50\'b8\'ea\'ae\'c6\'ae\'f8\'a4\'c6\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'70\'ab\'ac\'b1\'4d\'ae\'d7\'aa\'ba\'b8\'ea\'ae\'c6\'be\'e3\'b2\'7a\'bb\'50\'ac\'7d\'b9\'ee\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a7\'d6\'b3\'74\'b2\'7a\'b8\'d1
-\f0  YouTube 
-\f1 \'bc\'76\'a4\'f9\'a4\'ba\'ae\'65\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'a4\'6a\'ab\'ac\'a5\'f8\'b7\'7e\'af\'c5\'ac\'e3\'a8\'73\'b1\'4d\'ae\'d7\'bb\'50\'aa\'be\'c3\'d1\'ba\'de\'b2\'7a\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'be\'c7\'b3\'4e\'be\'f7\'ba\'63\'aa\'ba\'a8\'f3\'a6\'50\'ac\'e3\'a8\'73\'bb\'50\'a4\'e5\'c4\'6d\'a4\'c0\'aa\'52\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'b2\'60\'ab\'d7\'bc\'c6\'be\'da\'ac\'7d\'b9\'ee\'aa\'ba\'b0\'d3\'b7\'7e\'a4\'c0\'aa\'52\'b9\'ce\'b6\'a4\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b1\'4d\'b7\'7e\'a4\'ba\'ae\'65\'b9\'ce\'b6\'a4\'aa\'ba\'a8\'f3\'a7\'40\'bb\'50\'b2\'a3\'a5\'58\'a5\'ad\'a5\'78\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'a7\'f3\'b0\'aa\'c1\'f4\'a8\'70\'bb\'50\'a6\'77\'a5\'fe\'ab\'4f\'bb\'d9\'aa\'ba\'b2\'d5\'c2\'b4\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'b3\'42\'b2\'7a\'a4\'6a\'b6\'71\'b8\'ea\'ae\'c6\'a8\'d3\'b7\'bd\'aa\'ba\'ac\'e3\'a8\'73\'aa\'cc\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                        </tbody>\
-                    </table>\
-                `\
-            \},\
-            gemini_comparison: \{\
-                title: "Gemini vs Gemini Advanced 
-\f1 \'a4\'f1\'b8\'fb
-\f0 ",\
-                headerClass: "gemini-title-bg", // 
-\f1 \'a5\'ce\'a9\'f3\'bc\'d0\'c3\'44\'ad\'49\'b4\'ba
-\f0 \
-                content: `\
-                    <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="official-link">
-\f1 \'ab\'65\'a9\'b9
-\f0  Gemini 
-\f1 \'a9\'78\'a4\'e8\'ba\'f4\'af\'b8
-\f0 </a>\
-                    <table class="w-full details-table">\
-                        <thead>\
-                            <tr>\
-                                <th class="w-1/5">
-\f1 \'b6\'b5\'a5\'d8
-\f0 </th>\
-                                <th class="w-2/5 comparison-header text-emerald-600">Gemini (
-\f1 \'bc\'d0\'b7\'c7\'aa\'a9
-\f0 /
-\f1 \'a7\'4b\'b6\'4f\'aa\'a9
-\f0 )</th>\
-                                <th class="w-2/5 comparison-header text-emerald-800">Gemini Advanced</th>\
-                            </tr>\
-                        </thead>\
-                        <tbody>\
-                            <tr>\
-                                <td><strong>
-\f1 \'c2\'b2\'a4\'b6
-\f0 </strong></td>\
-                                <td>Google 
-\f1 \'aa\'ba\'b9\'ef\'b8\'dc\'a6\'a1
-\f0  AI 
-\f1 \'aa\'41\'b0\'c8\'a1\'41\'a5\'d1\'b1\'6a\'a4\'6a\'aa\'ba
-\f0  AI 
-\f1 \'bc\'d2\'ab\'ac
-\f0  (
-\f1 \'a6\'70
-\f0  Gemini Pro) 
-\f1 \'c5\'58\'b0\'ca\'a1\'41\'b4\'a3\'a8\'d1\'a7\'4b\'b6\'4f\'aa\'ba\'a4\'e5\'a6\'72\'a1\'42\'b9\'cf\'a4\'f9\'b5\'a5\'a6\'68\'bc\'d2\'ba\'41\'a4\'ac\'b0\'ca\'c5\'e9\'c5\'e7\'a1\'43
-\f0 </td>\
-                                <td>Gemini 
-\f1 \'aa\'ba\'a5\'49\'b6\'4f\'ad\'71\'be\'5c\'aa\'a9\'a5\'bb\'a1\'41\'b7\'66\'b8\'fc
-\f0  Google 
-\f1 \'b3\'cc\'b3\'bb\'a6\'79\'aa\'ba
-\f0  AI 
-\f1 \'bc\'d2\'ab\'ac\'a8\'74\'a6\'43\'a1\'41\'b4\'a3\'a8\'d1\'a7\'f3\'b1\'6a\'a4\'6a\'aa\'ba\'b1\'c0\'b2\'7a\'a1\'42\'bd\'73\'bd\'58\'a9\'4d\'b3\'d0\'b7\'4e\'a8\'f3\'a7\'40\'af\'e0\'a4\'4f\'a1\'41\'a8\'c3\'be\'e3\'a6\'58\'ad\'d3\'a4\'48\'a4\'c6\'c5\'e9\'c5\'e7\'a1\'43
-\f0 </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'af\'53\'a6\'e2
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'b7\'66\'b8\'fc
-\f0  Gemini Pro 
-\f1 \'b5\'a5\'b0\'aa\'ae\'c4\'af\'e0\'bc\'d2\'ab\'ac\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a4\'e4\'b4\'a9\'a4\'e5\'a6\'72\'a1\'42\'b9\'cf\'a4\'f9\'bf\'e9\'a4\'4a\'bb\'50\'a5\'cd\'a6\'a8\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a6\'db\'b5\'4d\'bb\'79\'a8\'a5\'b2\'7a\'b8\'d1\'bb\'50\'b9\'ef\'b8\'dc\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b0\'f2\'a5\'bb\'aa\'ba\'bc\'67\'a7\'40\'a1\'42\'ba\'4b\'ad\'6e\'a1\'42\'c2\'bd\'c4\'b6\'a1\'42\'b0\'dd\'b5\'aa\'af\'e0\'a4\'4f\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a5\'69\'b3\'7a\'b9\'4c
-\f0  gemini.google.com 
-\f1 \'a9\'ce
-\f0  App 
-\f1 \'a6\'73\'a8\'fa\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b3\'a1\'a4\'c0
-\f0  Google 
-\f1 \'c0\'b3\'a5\'ce\'b5\'7b\'a6\'a1\'be\'e3\'a6\'58
-\f0  (
-\f1 \'b3\'76\'a8\'42\'b1\'c0\'a5\'58
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li><strong>
-\f1 \'b7\'66\'b8\'fc
-\f0  Google 
-\f1 \'b3\'cc\'b3\'bb\'a6\'79\'aa\'ba
-\f0  AI 
-\f1 \'bc\'d2\'ab\'ac\'a8\'74\'a6\'43\'a1\'41\'a5\'5d\'ac\'41\'a1\'47
-\f0 </strong>\
-                                            <ul class="list-disc list-inside ml-4">\
-                                                <li><strong>Gemini 2.5 Pro:</strong> 
-\f1 \'b4\'a3\'a8\'d1\'b3\'bb\'af\'c5\'ae\'c4\'af\'e0\'a1\'41\'a4\'e4\'b4\'a9\'b6\'69\'b6\'a5\'a5\'5c\'af\'e0\'a6\'70
-\f0  Canvas (
-\f1 \'a5\'69\'af\'e0\'ab\'fc\'c2\'58\'ae\'69\'aa\'ba\'a4\'75\'a7\'40\'aa\'c5\'b6\'a1\'a9\'ce\'b3\'d0\'b7\'4e\'a4\'75\'a8\'e3\'be\'e3\'a6\'58
-\f0 ) 
-\f1 \'a4\'ce
-\f0  Veo2 (
-\f1 \'a5\'fd\'b6\'69\'aa\'ba\'bc\'76\'a4\'f9\'a5\'cd\'a6\'a8\'a7\'de\'b3\'4e
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                                <li><strong>Gemini 2.5 Flash:</strong> 
-\f1 \'ac\'b0\'bb\'dd\'ad\'6e\'b7\'a5\'ad\'50\'b3\'74\'ab\'d7\'a9\'4d\'ae\'c4\'b2\'76\'aa\'ba\'a5\'f4\'b0\'c8\'a6\'d3\'b3\'5d\'ad\'70\'aa\'ba\'bb\'b4\'b6\'71\'a4\'c6\'bc\'d2\'ab\'ac\'a1\'43
-\f0 </li>\
-                                                <li><strong>Gemini 2.0 Flash:</strong> 
-\f1 \'a5\'74\'a4\'40\'b4\'da\'b0\'aa\'ae\'c4\'af\'e0\'aa\'ba\'bb\'b4\'b6\'71\'a4\'c6\'bc\'d2\'ab\'ac\'bf\'ef\'b6\'b5\'a1\'43
-\f0 </li>\
-                                            </ul>\
-                                        </li>\
-                                        <li><strong>
-\f1 \'ad\'d3\'a4\'48\'a4\'c6
-\f0  (Personalization):</strong> 
-\f1 \'b4\'a3\'a8\'d1\'a7\'f3\'b6\'4b\'aa\'f1\'a8\'cf\'a5\'ce\'aa\'cc\'b2\'df\'ba\'44\'bb\'50\'b0\'be\'a6\'6e\'aa\'ba\'a4\'ac\'b0\'ca\'c5\'e9\'c5\'e7\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'b7\'a5\'b1\'6a\'aa\'ba\'b1\'c0\'b2\'7a\'af\'e0\'a4\'4f\'a1\'47
-\f0 </strong>
-\f1 \'b3\'42\'b2\'7a\'bd\'c6\'c2\'f8\'ab\'fc\'a5\'4f\'a9\'4d\'a6\'68\'a8\'42\'c6\'4a\'a5\'f4\'b0\'c8\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'b6\'69\'b6\'a5\'bd\'73\'bd\'58\'af\'e0\'a4\'4f\'a1\'47
-\f0 </strong>
-\f1 \'b2\'a3\'a5\'cd\'a1\'42\'b8\'d1\'c4\'c0\'a1\'42\'b0\'a3\'bf\'f9\'b5\'7b\'a6\'a1\'bd\'58\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a7\'f3\'aa\'f8\'aa\'ba\'b1\'a1\'b9\'d2\'af\'df\'b5\'b8\'b2\'7a\'b8\'d1\'a1\'47
-\f0 </strong>
-\f1 \'b3\'42\'b2\'7a\'a7\'f3\'aa\'f8\'a4\'e5\'a5\'f3\'a9\'4d\'b9\'ef\'b8\'dc\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a8\'f4\'b6\'56\'aa\'ba\'b3\'d0\'b7\'4e\'a5\'cd\'a6\'a8\'a1\'47
-\f0 </strong>
-\f1 \'b0\'aa\'ab\'7e\'bd\'e8\'bc\'67\'a7\'40\'a1\'42\'a4\'ba\'ae\'65\'b5\'6f\'b7\'51\'a1\'43
-\f0 </li>\
-                                        <li><strong>
-\f1 \'a7\'f3\'b2\'60\'a4\'4a\'aa\'ba
-\f0  Google Workspace 
-\f1 \'be\'e3\'a6\'58
-\f0 </strong> (
-\f1 \'a6\'70
-\f0  Gmail, Docs
-\f1 \'a1\'41\'b3\'76\'a8\'42\'b1\'c0\'a5\'58
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'c0\'75\'a5\'fd\'a6\'73\'a8\'fa\'b7\'73\'a5\'5c\'af\'e0\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'ad\'ad\'a8\'ee
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'a5\'69\'af\'e0\'b7\'7c\'a6\'b3\'a8\'cf\'a5\'ce\'c0\'57\'b2\'76\'a9\'ce\'ac\'64\'b8\'df\'aa\'f8\'ab\'d7\'ad\'ad\'a8\'ee\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'50
-\f0  Advanced 
-\f1 \'ac\'db\'a4\'f1\'a1\'41\'bc\'d2\'ab\'ac\'af\'e0\'a4\'4f\'b8\'fb\'b0\'f2\'c2\'a6\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b3\'a1\'a4\'c0\'b6\'69\'b6\'a5\'a5\'5c\'af\'e0\'b5\'4c\'aa\'6b\'a8\'cf\'a5\'ce\'a1\'43
-\f0 </li>\
-                                        <li>AI 
-\f1 \'a5\'cd\'a6\'a8\'a4\'ba\'ae\'65\'a4\'b4\'bb\'dd\'ac\'64\'ae\'d6\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'a5\'49\'b6\'4f\'ad\'71\'be\'5c
-\f0  Google One AI Premium
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b9\'ef\'ba\'f4\'b8\'f4\'b3\'73\'bd\'75\'a6\'b3\'ad\'6e\'a8\'44\'a1\'43
-\f0 </li>\
-                                        <li>AI 
-\f1 \'a5\'cd\'a6\'a8\'a4\'ba\'ae\'65\'a4\'b4\'bb\'dd\'ac\'64\'ae\'d6\'a1\'41\'a4\'a3\'ab\'4f\'c3\'d2\'a7\'b9\'a5\'fe\'b7\'c7\'bd\'54\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b3\'a1\'a4\'c0\'b3\'cc\'b7\'73\'a5\'5c\'af\'e0\'a5\'69\'af\'e0\'a4\'b4\'a6\'62\'b9\'ea\'c5\'e7\'b6\'a5\'ac\'71\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'be\'de\'a7\'40\'bb\'a1\'a9\'fa
-\f0 </strong></td>\
-                                <td>\
-                                    <ol class="list-decimal list-inside">\
-                                        <li>
-\f1 \'ab\'65\'a9\'b9
-\f0  gemini.google.com 
-\f1 \'a9\'ce\'b6\'7d\'b1\'d2
-\f0  Gemini App
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b5\'6e\'a4\'4a
-\f0  Google 
-\f1 \'b1\'62\'a4\'e1\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a6\'62\'bf\'e9\'a4\'4a\'ae\'d8\'a4\'a4\'bf\'e9\'a4\'4a\'a4\'e5\'a6\'72\'a9\'ce\'a4\'57\'b6\'c7\'b9\'cf\'a4\'f9\'b4\'a3\'b0\'dd
-\f0 /
-\f1 \'a4\'ac\'b0\'ca\'a1\'43
-\f0 </li>\
-                                    </ol>\
-                                </td>\
-                                <td>\
-                                    <ol class="list-decimal list-inside">\
-                                        <li>
-\f1 \'ad\'71\'be\'5c
-\f0  Google One AI Premium
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'ab\'65\'a9\'b9
-\f0  gemini.google.com 
-\f1 \'a9\'ce
-\f0  App
-\f1 \'a1\'41\'bd\'54\'ab\'4f\'a4\'c1\'b4\'ab\'a6\'dc
-\f0  "Advanced" 
-\f1 \'bc\'d2\'a6\'a1\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bf\'e9\'a4\'4a\'a7\'f3\'bd\'c6\'c2\'f8\'aa\'ba\'b4\'a3\'a5\'dc\'a1\'41\'a7\'51\'a5\'ce\'a8\'e4\'b6\'69\'b6\'a5\'bc\'d2\'ab\'ac
-\f0  (
-\f1 \'a6\'70
-\f0  2.5 Pro, 2.5 Flash) 
-\f1 \'aa\'ba\'af\'e0\'a4\'4f\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'c5\'e9\'c5\'e7\'ad\'d3\'a4\'48\'a4\'c6\'b3\'5d\'a9\'77\'b1\'61\'a8\'d3\'aa\'ba\'c0\'75\'a4\'c6\'a4\'ac\'b0\'ca\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a6\'62\'a4\'e4\'b4\'a9\'aa\'ba
-\f0  Workspace 
-\f1 \'c0\'b3\'a5\'ce\'a4\'a4\'a8\'cf\'a5\'ce\'be\'e3\'a6\'58\'a5\'5c\'af\'e0\'a1\'43
-\f0 </li>\
-                                    </ol>\
-                                </td>\
-                            </tr>\
-                            <tr>\
-                                <td><strong>
-\f1 \'c0\'b3\'a5\'ce\'ab\'d8\'c4\'b3
-\f0 </strong></td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'a4\'e9\'b1\'60\'b0\'dd\'c3\'44\'ac\'64\'b8\'df\'a1\'42\'a7\'d6\'b3\'74\'c0\'f2\'a8\'fa\'b8\'ea\'b0\'54\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'c2\'b2\'b3\'e6\'aa\'ba\'a4\'e5\'a5\'bb\'a5\'cd\'a6\'a8\'a1\'42\'c2\'bd\'c4\'b6\'a1\'42\'ba\'4b\'ad\'6e\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'be\'c7\'b2\'df\'b7\'73\'aa\'be\'a1\'42\'b8\'a3\'a4\'4f\'bf\'45\'c0\'fa\'aa\'ec\'a8\'42\'b7\'51\'aa\'6b\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'ad\'d3\'a4\'48\'a7\'55\'b2\'7a\'a9\'ca\'bd\'e8\'aa\'ba\'a5\'f4\'b0\'c8\'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                                <td>\
-                                    <ul class="list-disc list-inside">\
-                                        <li>
-\f1 \'b3\'42\'b2\'7a\'bd\'c6\'c2\'f8\'aa\'ba\'ac\'e3\'a8\'73\'bb\'50\'a4\'c0\'aa\'52\'a5\'f4\'b0\'c8\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b1\'4d\'b7\'7e\'af\'c5\'a4\'ba\'ae\'65\'b3\'d0\'a7\'40
-\f0  (
-\f1 \'b3\'f8\'a7\'69\'a1\'42\'aa\'f8\'a4\'e5\'a1\'42\'b5\'7b\'a6\'a1\'bd\'58\'a1\'42\'bc\'76\'a4\'f9\'b8\'7d\'a5\'bb
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'b2\'60\'ab\'d7\'be\'c7\'b2\'df\'bb\'50\'ad\'d3\'a4\'48\'a4\'c6\'bb\'b2\'be\'c9\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'b0\'aa\'ab\'d7\'b3\'d0\'b7\'4e\'a9\'4d\'ba\'eb\'bd\'54\'a9\'ca\'aa\'ba\'a4\'75\'a7\'40\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a7\'40\'ac\'b0\'b1\'6a\'a4\'6a\'aa\'ba\'b5\'7b\'a6\'a1\'b3\'5d\'ad\'70\'b9\'d9\'a6\'f1\'a1\'41\'a7\'51\'a5\'ce\'b6\'69\'b6\'a5\'bd\'73\'bd\'58\'a5\'5c\'af\'e0\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'a8\'ee\'a9\'77\'b8\'d4\'b2\'d3\'aa\'ba\'b0\'d3\'b7\'7e\'b5\'a6\'b2\'a4\'a9\'ce\'ad\'70\'b5\'65\'a1\'41\'a7\'51\'a5\'ce\'a8\'e4\'b1\'6a\'a4\'6a\'b1\'c0\'b2\'7a\'af\'e0\'a4\'4f\'a1\'43
-\f0 </li>\
-                                        <li>
-\f1 \'bb\'dd\'ad\'6e\'a7\'d6\'b3\'74\'a6\'5e\'c0\'b3\'a5\'42\'b0\'aa\'ae\'c4\'af\'e0\'aa\'ba
-\f0  AI 
-\f1 \'a4\'ac\'b0\'ca
-\f0  (
-\f1 \'a8\'cf\'a5\'ce
-\f0  Flash 
-\f1 \'bc\'d2\'ab\'ac
-\f0 )
-\f1 \'a1\'43
-\f0 </li>\
-                                    </ul>\
-                                </td>\
-                            </tr>\
-                        </tbody>\
-                    </table>\
-                `\
-            \},\
-            aistudio: \{\
-                title: "Google AI Studio 
-\f1 \'b8\'d4\'b2\'d3\'a4\'b6\'b2\'d0
-\f0 ",\
-                headerClass: "aistudio-title-bg", // 
-\f1 \'a5\'ce\'a9\'f3\'bc\'d0\'c3\'44\'ad\'49\'b4\'ba
-\f0 \
-                content: `\
-                    <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="official-link">
-\f1 \'ab\'65\'a9\'b9
-\f0  Google AI Studio 
-\f1 \'a9\'78\'a4\'e8\'ba\'f4\'af\'b8
-\f0 </a>\
-                    <table class="w-full details-table">\
-                        <tbody>\
-                            <tr><th class="w-1/4">
-\f1 \'b6\'b5\'a5\'d8
-\f0 </th><th>
-\f1 \'bb\'a1\'a9\'fa
-\f0 </th></tr>\
-                            <tr><td><strong>
-\f1 \'c2\'b2\'a4\'b6
-\f0 </strong></td><td>
-\f1 \'a4\'40\'ad\'d3\'b0\'f2\'a9\'f3\'ba\'f4\'b8\'f4\'aa\'ba\'b6\'7d\'b5\'6f\'aa\'cc\'a4\'75\'a8\'e3\'a1\'41\'a5\'69\'a5\'48\'c5\'fd\'b6\'7d\'b5\'6f\'aa\'cc\'a7\'d6\'b3\'74\'ad\'ec\'ab\'ac\'b3\'5d\'ad\'70\'a9\'4d\'ab\'d8\'ba\'63\'a5\'d1
-\f0  Google 
-\f1 \'a4\'6a\'ab\'ac\'bb\'79\'a8\'a5\'bc\'d2\'ab\'ac
-\f0  (
-\f1 \'a6\'70
-\f0  Gemini 
-\f1 \'a8\'74\'a6\'43\'bc\'d2\'ab\'ac
-\f0 ) 
-\f1 \'c5\'58\'b0\'ca\'aa\'ba\'c0\'b3\'a5\'ce\'b5\'7b\'a6\'a1\'a1\'43\'b4\'a3\'a8\'d1\'a4\'cd\'b5\'bd\'aa\'ba\'a4\'b6\'ad\'b1\'a8\'d3\'b9\'ea\'c5\'e7\'b4\'a3\'a5\'dc\'a9\'4d\'bc\'d2\'ab\'ac\'b3\'5d\'a9\'77\'a1\'43
-\f0 </td></tr>\
-                            <tr><td><strong>
-\f1 \'af\'53\'a6\'e2
-\f0 </strong></td><td>\
-                                <ul class="list-disc list-inside">\
-                                    <li><strong>
-\f1 \'a7\'d6\'b3\'74\'ad\'ec\'ab\'ac\'bb\'73\'a7\'40\'a1\'47
-\f0 </strong>
-\f1 \'b4\'a3\'a8\'d1\'aa\'bd\'c4\'b1\'aa\'ba\'a4\'b6\'ad\'b1\'a8\'d3\'b4\'fa\'b8\'d5\'a9\'4d\'bd\'d5\'be\'e3\'bc\'d2\'ab\'ac\'b4\'a3\'a5\'dc
-\f0  (Prompt Engineering)
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'a4\'e4\'b4\'a9
-\f0  Gemini Pro 
-\f1 \'a9\'4d\'a8\'e4\'a5\'4c\'bc\'d2\'ab\'ac\'a1\'47
-\f0 </strong>
-\f1 \'a5\'69\'bf\'ef\'be\'dc\'a4\'a3\'a6\'50\'aa\'ba
-\f0  Google AI 
-\f1 \'bc\'d2\'ab\'ac\'b6\'69\'a6\'e6\'b9\'ea\'c5\'e7
-\f0  (
-\f1 \'a6\'70
-\f0  Gemini Pro, Gemini Pro Vision)
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li><strong>Gemini 2.0 Flash Preview Image Generation
-\f1 \'a1\'47
-\f0 </strong>
-\f1 \'be\'e3\'a6\'58\'b1\'6a\'a4\'6a\'aa\'ba\'b9\'cf\'b9\'b3\'a5\'cd\'a6\'a8\'bb\'50\'ad\'d7\'b9\'cf\'a5\'5c\'af\'e0\'a1\'43
-\f0 </li>\
-                                    <li><strong>API 
-\f1 \'aa\'f7\'c6\'5f\'b2\'a3\'a5\'cd\'a1\'47
-\f0 </strong>
-\f1 \'a4\'e8\'ab\'4b\'b1\'4e\'ad\'ec\'ab\'ac\'c2\'e0\'b4\'ab\'ac\'b0\'b9\'ea\'bb\'da\'c0\'b3\'a5\'ce\'b5\'7b\'a6\'a1\'a1\'41\'a8\'c3\'be\'e3\'a6\'58\'a8\'ec\'a6\'db\'a4\'76\'aa\'ba\'b5\'7b\'a6\'a1\'bd\'58\'a4\'a4
-\f0  (
-\f1 \'b3\'7a\'b9\'4c
-\f0  Vertex AI 
-\f1 \'a9\'ce
-\f0  Gemini API)
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'a6\'68\'ba\'d8\'b4\'a3\'a5\'dc\'c3\'fe\'ab\'ac\'a1\'47
-\f0 </strong>
-\f1 \'a4\'e4\'b4\'a9\'a6\'db\'a5\'d1\'ae\'e6\'a6\'a1\'b4\'a3\'a5\'dc
-\f0  (Freeform)
-\f1 \'a1\'42\'b5\'b2\'ba\'63\'a4\'c6\'b4\'a3\'a5\'dc
-\f0  (Structured) 
-\f1 \'a9\'4d\'b2\'e1\'a4\'d1\'b4\'a3\'a5\'dc
-\f0  (Chat)
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'bd\'d5\'be\'e3\'bc\'d2\'ab\'ac\'b0\'d1\'bc\'c6\'a1\'47
-\f0 </strong>
-\f1 \'a5\'69\'a5\'48\'bd\'d5\'be\'e3\'b7\'c5\'ab\'d7
-\f0  (temperature)
-\f1 \'a1\'42\'ad\'d4\'bf\'ef\'b5\'fc\'bc\'c6\'b6\'71
-\f0  (topK/topP)
-\f1 \'a1\'42\'b3\'cc\'a4\'6a\'bf\'e9\'a5\'58
-\f0  token 
-\f1 \'b5\'a5\'b0\'d1\'bc\'c6\'a8\'d3\'bc\'76\'c5\'54\'bf\'e9\'a5\'58\'b5\'b2\'aa\'47\'aa\'ba\'b3\'d0\'b7\'4e\'a9\'ca\'bb\'50\'bd\'54\'a9\'77\'a9\'ca\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'bd\'64\'a8\'d2\'b4\'a3\'a5\'dc\'ae\'77\'a1\'47
-\f0 </strong>
-\f1 \'b4\'a3\'a8\'d1\'a6\'68\'ba\'d8\'bd\'64\'a8\'d2\'b4\'a3\'a5\'dc\'a1\'41\'c0\'b0\'a7\'55\'a8\'cf\'a5\'ce\'aa\'cc\'a7\'d6\'b3\'74\'a4\'57\'a4\'e2\'a1\'43
-\f0 </li>\
-                                    <li><strong>Stream 
-\f1 \'a5\'5c\'af\'e0\'a1\'47
-\f0 </strong>
-\f1 \'a4\'e4\'b4\'a9\'bc\'d2\'ab\'ac\'a6\'5e\'c0\'b3\'aa\'ba\'a6\'ea\'ac\'79\'bf\'e9\'a5\'58\'a1\'41\'b4\'a3\'a4\'c9\'a4\'ac\'b0\'ca\'a7\'59\'ae\'c9\'a9\'ca\'a1\'43
-\f0 </li>\
-                                    <li><strong>Video Gen 
-\f1 \'a5\'5c\'af\'e0\'a1\'47
-\f0 </strong>
-\f1 \'be\'e3\'a6\'58\'bc\'76\'a4\'f9\'a5\'cd\'a6\'a8\'af\'e0\'a4\'4f
-\f0  (
-\f1 \'a8\'d2\'a6\'70\'a8\'cf\'a5\'ce
-\f0  Veo 
-\f1 \'bc\'d2\'ab\'ac
-\f0 )
-\f1 \'a1\'41\'c2\'58\'ae\'69\'b3\'d0\'b7\'4e\'c0\'b3\'a5\'ce\'bd\'64\'b3\'f2\'a1\'43
-\f0 </li>\
-                                    <li><strong>Starter apps
-\f1 \'a1\'47
-\f0 </strong>
-\f1 \'b4\'a3\'a8\'d1\'b9\'77\'ab\'d8\'aa\'ba\'c0\'b3\'a5\'ce\'b5\'7b\'a6\'a1\'bd\'64\'a5\'bb\'a1\'41\'a5\'5b\'b3\'74\'b6\'7d\'b5\'6f\'ac\'79\'b5\'7b\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'bc\'76\'ad\'b5\'b3\'76\'a6\'72\'bd\'5a
-\f0  (SRT
-\f1 \'ae\'e6\'a6\'a1
-\f0 )
-\f1 \'a1\'47
-\f0 </strong>
-\f1 \'a4\'e4\'b4\'a9\'a5\'cd\'a6\'a8\'bc\'76\'a4\'f9\'a9\'ce\'ad\'b5\'b0\'54\'a4\'ba\'ae\'65\'aa\'ba\'a6\'72\'b9\'f5\'c0\'c9\'ae\'d7\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'a6\'68\'bb\'79\'a8\'c3\'a6\'43\'b3\'76\'a6\'72\'bd\'5a\'a1\'47
-\f0 </strong>
-\f1 \'af\'e0\'b0\'f7\'b2\'a3\'a5\'cd\'a5\'5d\'a7\'74\'a6\'68\'ba\'d8\'bb\'79\'a8\'a5\'b9\'ef\'b7\'d3\'aa\'ba\'b3\'76\'a6\'72\'bd\'5a\'a4\'ba\'ae\'65\'a1\'43
-\f0 </li>\
-                                </ul>\
-                            </td></tr>\
-                            <tr><td><strong>
-\f1 \'ad\'ad\'a8\'ee
-\f0 </strong></td><td>\
-                                <ul class="list-disc list-inside">\
-                                    <li>
-\f1 \'bb\'dd\'ad\'6e
-\f0  Google 
-\f1 \'b1\'62\'a4\'e1\'a1\'43\'b6\'69\'b6\'a5\'a8\'cf\'a5\'ce\'a9\'4d\'b3\'a1\'b8\'70\'b3\'71\'b1\'60\'bb\'dd\'ad\'6e
-\f0  Google Cloud Platform (GCP) 
-\f1 \'b1\'62\'a4\'e1\'a4\'ce\'b3\'5d\'a9\'77\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'a7\'4b\'b6\'4f\'bc\'68\'af\'c5\'a6\'b3\'a8\'cf\'a5\'ce\'b6\'71\'ad\'ad\'a8\'ee
-\f0  (API calls per minute)
-\f1 \'a1\'43\'a4\'6a\'b6\'71\'a8\'cf\'a5\'ce\'bb\'dd\'a5\'49\'b6\'4f\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'a5\'44\'ad\'6e\'ad\'b1\'a6\'56\'b6\'7d\'b5\'6f\'aa\'cc\'a9\'4d\'a8\'e3\'a6\'b3\'a4\'40\'a9\'77\'a7\'de\'b3\'4e\'ad\'49\'b4\'ba\'aa\'ba\'a8\'cf\'a5\'ce\'aa\'cc\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'bc\'d2\'ab\'ac\'a6\'e6\'ac\'b0\'a9\'4d\'bf\'e9\'a5\'58\'a4\'b4\'bb\'dd\'a5\'4a\'b2\'d3\'b4\'fa\'b8\'d5\'a9\'4d\'b5\'fb\'a6\'f4\'a1\'41\'a5\'48\'bd\'54\'ab\'4f\'a6\'77\'a5\'fe\'a9\'4d\'ad\'74\'b3\'64\'a5\'f4\'aa\'ba
-\f0  AI 
-\f1 \'c0\'b3\'a5\'ce\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'b3\'a1\'a4\'c0\'b3\'cc\'b7\'73\'bc\'d2\'ab\'ac\'a9\'ce\'a5\'5c\'af\'e0\'a5\'69\'af\'e0\'ad\'ba\'a5\'fd\'a6\'62
-\f0  Vertex AI 
-\f1 \'a4\'57\'b4\'a3\'a8\'d1\'a1\'43
-\f0 </li>\
-                                </ul>\
-                            </td></tr>\
-                            <tr><td><strong>
-\f1 \'be\'de\'a7\'40\'bb\'a1\'a9\'fa
-\f0 </strong></td><td>\
-                                <ol class="list-decimal list-inside">\
-                                    <li>
-\f1 \'ab\'65\'a9\'b9
-\f0  Google AI Studio 
-\f1 \'ba\'f4\'af\'b8
-\f0  (aistudio.google.com) 
-\f1 \'a8\'c3\'a8\'cf\'a5\'ce
-\f0  Google 
-\f1 \'b1\'62\'a4\'e1\'b5\'6e\'a4\'4a\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'ab\'d8\'a5\'df\'b7\'73\'aa\'ba\'b4\'a3\'a5\'dc
-\f0  (
-\f1 \'a8\'d2\'a6\'70
-\f0  "Create new prompt" 
-\f1 \'a9\'ce
-\f0  "Create new chat prompt")
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li>(
-\f1 \'a5\'69\'bf\'ef
-\f0 ) 
-\f1 \'a6\'62\'a5\'aa\'b0\'bc\'bf\'ef\'be\'dc\'ad\'6e\'a8\'cf\'a5\'ce\'aa\'ba\'bc\'d2\'ab\'ac
-\f0  (
-\f1 \'a8\'d2\'a6\'70
-\f0  Gemini Pro, Gemini 2.0 Flash Preview Image Generation)
-\f1 \'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'a6\'62\'b4\'a3\'a5\'dc\'bd\'73\'bf\'e8\'be\'b9\'a4\'a4\'bf\'e9\'a4\'4a\'b1\'7a\'aa\'ba\'ab\'fc\'a5\'4f\'a9\'ce\'b0\'dd\'c3\'44\'a1\'43\'b9\'ef\'a9\'f3\'b2\'e1\'a4\'d1\'b4\'a3\'a5\'dc\'a1\'41\'a5\'69\'a5\'48\'b6\'69\'a6\'e6\'a6\'68\'bd\'fc\'b9\'ef\'b8\'dc\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'c2\'49\'c0\'bb\'a1\'75\'b0\'f5\'a6\'e6\'a1\'76
-\f0 (Run) 
-\f1 \'ab\'f6\'b6\'73\'c6\'5b\'b9\'ee\'bc\'d2\'ab\'ac\'aa\'ba\'bf\'e9\'a5\'58\'a1\'41\'c5\'e9\'c5\'e7
-\f0  Stream 
-\f1 \'a7\'59\'ae\'c9\'a6\'5e\'c0\'b3\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'a6\'62\'a5\'6b\'b0\'bc\'ad\'b1\'aa\'4f\'bd\'d5\'be\'e3\'bc\'d2\'ab\'ac\'b0\'d1\'bc\'c6
-\f0  (
-\f1 \'a6\'70
-\f0  Temperature, Top K, Top P) 
-\f1 \'a5\'48\'c0\'75\'a4\'c6\'b5\'b2\'aa\'47\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'b1\'b4\'af\'c1
-\f0  Starter apps 
-\f1 \'a5\'48\'a7\'d6\'b3\'74\'b1\'d2\'b0\'ca\'b1\'4d\'ae\'d7\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'ba\'a1\'b7\'4e\'ab\'e1\'a1\'41\'a5\'69\'a5\'48\'c2\'49\'c0\'bb\'a1\'75\'a8\'fa\'b1\'6f\'b5\'7b\'a6\'a1\'bd\'58\'a1\'76
-\f0 (Get code) 
-\f1 \'a8\'d3\'c0\'f2\'b1\'6f
-\f0  Python, JavaScript, cURL 
-\f1 \'b5\'a5\'bb\'79\'a8\'a5\'aa\'ba
-\f0  API 
-\f1 \'a9\'49\'a5\'73\'bd\'64\'a8\'d2\'a1\'43
-\f0 </li>\
-                                    <li>
-\f1 \'ad\'59\'ad\'6e\'b6\'69\'a6\'e6\'a7\'f3\'a4\'6a\'b6\'71\'a9\'ce\'a5\'bf\'a6\'a1\'aa\'ba\'b3\'a1\'b8\'70\'a1\'41\'b3\'71\'b1\'60\'b7\'7c\'b7\'66\'b0\'74
-\f0  Vertex AI 
-\f1 \'a5\'ad\'a5\'78\'a1\'43
-\f0 </li>\
-                                </ol>\
-                            </td></tr>\
-                            <tr><td><strong>
-\f1 \'c0\'b3\'a5\'ce\'ab\'d8\'c4\'b3
-\f0 </strong></td><td>\
-                                <ul class="list-disc list-inside">\
-                                    <li><strong>
-\f1 \'b2\'e1\'a4\'d1\'be\'f7\'be\'b9\'a4\'48\'ad\'ec\'ab\'ac\'b6\'7d\'b5\'6f\'a1\'47
-\f0 </strong>
-\f1 \'a7\'d6\'b3\'74\'ab\'d8\'a5\'df\'a9\'4d\'b4\'fa\'b8\'d5\'a6\'55\'ba\'d8\'a5\'ce\'b3\'7e\'aa\'ba\'b2\'e1\'a4\'d1\'be\'f7\'be\'b9\'a4\'48\'ad\'ec\'ab\'ac\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'a4\'ba\'ae\'65\'a5\'cd\'a6\'a8\'a4\'75\'a8\'e3\'a1\'47
-\f0 </strong>
-\f1 \'b6\'7d\'b5\'6f\'a6\'db\'b0\'ca\'bc\'b6\'bc\'67\'a4\'e5\'b3\'b9\'a1\'42\'ba\'4b\'ad\'6e\'a1\'42\'c2\'bd\'c4\'b6\'a1\'42\'b2\'a3\'ab\'7e\'b4\'79\'ad\'7a\'b5\'a5\'a4\'75\'a8\'e3\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'b5\'7b\'a6\'a1\'bd\'58\'a5\'cd\'a6\'a8\'bb\'50\'bb\'b2\'a7\'55\'a1\'47
-\f0 </strong>
-\f1 \'ab\'d8\'a5\'df\'a8\'f3\'a7\'55\'b6\'7d\'b5\'6f\'aa\'cc\'bd\'73\'bc\'67\'a1\'42\'b8\'d1\'c4\'c0\'a9\'ce\'c2\'e0\'b4\'ab\'b5\'7b\'a6\'a1\'bd\'58\'aa\'ba\'a4\'75\'a8\'e3\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'b1\'d0\'a8\'7c\'c0\'b3\'a5\'ce\'a1\'47
-\f0 </strong>
-\f1 \'b6\'7d\'b5\'6f\'a4\'ac\'b0\'ca\'a6\'a1\'be\'c7\'b2\'df\'a4\'75\'a8\'e3\'a1\'42\'a6\'db\'b0\'ca\'a7\'e5\'a7\'ef\'bb\'b2\'a7\'55\'a9\'ce\'ad\'d3\'a4\'48\'a4\'c6\'b0\'dd\'b5\'aa\'a8\'74\'b2\'ce\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'ab\'c8\'bb\'73\'a4\'c6
-\f0  AI 
-\f1 \'b8\'d1\'a8\'4d\'a4\'e8\'ae\'d7\'a1\'47
-\f0 </strong>
-\f1 \'ac\'b0\'af\'53\'a9\'77\'b7\'7e\'b0\'c8\'bb\'dd\'a8\'44\'a5\'b4\'b3\'79
-\f0  AI 
-\f1 \'c5\'58\'b0\'ca\'aa\'ba\'c0\'b3\'a5\'ce\'a1\'41\'a8\'d2\'a6\'70\'ab\'c8\'aa\'41\'a6\'db\'b0\'ca\'a4\'c6\'a1\'42\'b8\'ea\'ae\'c6\'a4\'c0\'aa\'52\'b5\'a5\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'b3\'d0\'b7\'4e\'bc\'67\'a7\'40\'bb\'b2\'a7\'55\'a1\'47
-\f0 </strong>
-\f1 \'b2\'a3\'a5\'cd\'ac\'47\'a8\'c6\'c2\'49\'a4\'6c\'a1\'42\'a8\'a4\'a6\'e2\'b4\'79\'ad\'7a\'a1\'42\'b8\'d6\'ba\'71\'b5\'a5\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'b9\'cf\'b9\'b3\'bb\'50\'bc\'76\'a4\'f9\'c0\'b3\'a5\'ce\'a1\'47
-\f0 </strong>
-\f1 \'b6\'7d\'b5\'6f\'a4\'c0\'aa\'52\'b9\'cf\'a4\'f9\'a4\'ba\'ae\'65\'a1\'42\'b2\'a3\'a5\'cd\'b9\'cf\'a4\'f9\'b4\'79\'ad\'7a\'a1\'42\'ad\'d7\'b9\'cf\'a9\'ce\'a5\'cd\'a6\'a8\'b5\'75\'bc\'76\'a4\'f9\'a1\'42\'bb\'73\'a7\'40\'bc\'76\'ad\'b5\'b3\'76\'a6\'72\'bd\'5a\'aa\'ba\'c0\'b3\'a5\'ce\'a1\'43
-\f0 </li>\
-                                    <li><strong>
-\f1 \'a7\'51\'a5\'ce
-\f0  Starter apps 
-\f1 \'a7\'d6\'b3\'74\'b3\'a1\'b8\'70\'b1\'60\'a8\'a3\'c0\'b3\'a5\'ce\'b3\'f5\'b4\'ba\'a1\'43
-\f0 </strong></li>\
-                                </ul>\
-                            </td></tr>\
-                        </tbody>\
-                    </table>\
-                `\
-            \}\
-        \};\
-\
-        const modal = document.getElementById('details-modal');\
-        const modalHeader = document.getElementById('modal-header');\
-        const modalTitleText = document.getElementById('modal-title-text');\
-        const modalBody = document.getElementById('modal-body');\
-        const mainContainer = document.getElementById('main-container');\
-\
-        function showDetails(aiKey) \{\
-            if (aiData[aiKey]) \{\
-                // 
-\f1 \'a7\'f3\'b7\'73\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1\'bc\'d0\'c3\'44\'a9\'4d\'ad\'49\'b4\'ba\'a6\'e2
-\f0 \
-                modalTitleText.textContent = aiData[aiKey].title;\
-                modalHeader.className = 'modal-header text-center'; // 
-\f1 \'ad\'ab\'b8\'6d
-\f0  class 
-\f1 \'a8\'c3\'bd\'54\'ab\'4f
-\f0  text-center\
-                if (aiData[aiKey].headerClass) \{\
-                    modalHeader.classList.add(aiData[aiKey].headerClass);\
-                \}\
-\
-                // 
-\f1 \'b6\'f1\'a5\'52\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1\'a4\'ba\'ae\'65
-\f0 \
-                modalBody.innerHTML = aiData[aiKey].content;\
-                modal.style.display = "block"; // 
-\f1 \'c5\'e3\'a5\'dc\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1
-\f0 \
-                mainContainer.style.filter = 'blur(5px)'; // 
-\f1 \'bc\'d2\'bd\'6b\'ad\'49\'b4\'ba
-\f0 \
-                document.body.style.overflow = 'hidden'; // 
-\f1 \'a8\'be\'a4\'ee\'ad\'49\'b4\'ba\'ba\'75\'b0\'ca
-\f0 \
-            \}\
-        \}\
-\
-        function closeDetailsModal() \{\
-            modal.style.display = "none"; // 
-\f1 \'c1\'f4\'c2\'c3\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1
-\f0 \
-            modalBody.innerHTML = ""; // 
-\f1 \'b2\'4d\'aa\'c5\'a4\'ba\'ae\'65
-\f0 \
-            mainContainer.style.filter = 'none'; // 
-\f1 \'b2\'be\'b0\'a3\'ad\'49\'b4\'ba\'bc\'d2\'bd\'6b
-\f0 \
-            document.body.style.overflow = 'auto'; // 
-\f1 \'ab\'ec\'b4\'5f\'ad\'49\'b4\'ba\'ba\'75\'b0\'ca
-\f0 \
-        \}\
-\
-        // 
-\f1 \'c2\'49\'c0\'bb\'bc\'75\'a5\'58\'b5\'f8\'b5\'a1\'a5\'7e\'b3\'a1\'b0\'cf\'b0\'ec\'a4\'5d\'a5\'69\'c3\'f6\'b3\'ac
-\f0 \
-        window.onclick = function(event) \{\
-            if (event.target == modal) \{\
-                closeDetailsModal();\
-            \}\
-        \}\
-    </script>\
-\
-</body>\
-</html>\
-}
+                                    <ul class="list-disc list-inside">
+                                        <li>需要 Google 帳戶。</li>
+                                        <li>主要支援英文，其他語言支援持續改進。</li>
+                                        <li>標準版用量限制 (例如：來源數量、總儲存空間等，請參考官方最新說明)。</li>
+                                        <li>AI 生成內容需事實查核。</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>需要 Google 帳戶並訂閱 Plus 方案。</li>
+                                        <li>對硬體或網路環境可能有更高要求 (視具體功能而定)。</li>
+                                        <li>進階功能可能需要一定的學習曲線。</li>
+                                        <li>仍需注意 AI 倫理與資料隱私。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>操作說明</strong></td>
+                                <td>
+                                    <ol class="list-decimal list-inside">
+                                        <li>登入 notebooklm.google.com。</li>
+                                        <li>建立筆記本，新增來源 (文件、網址等)。</li>
+                                        <li>文件處理後，可針對來源提問、要求摘要、製作筆記、產生語音摘要、建立心智圖等。</li>
+                                        <li>利用「探索來源」功能快速加入相關資料。</li>
+                                        <li>釘選有用回應與筆記。</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol class="list-decimal list-inside">
+                                        <li>類似標準版操作流程。</li>
+                                        <li>額外的團隊協作設定與管理功能。</li>
+                                        <li>使用量分析數據查閱。</li>
+                                        <li>設定自訂回覆風格與長度。</li>
+                                        <li>管理進階隱私權與安全性設定。</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>應用建議</strong></td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>個人學術研究、市場分析。</li>
+                                        <li>個人內容創作、學習筆記與資料消化。</li>
+                                        <li>小型專案的資料整理與洞察。</li>
+                                        <li>快速理解 YouTube 影片內容。</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>大型企業級研究專案與知識管理。</li>
+                                        <li>學術機構的協同研究與文獻分析。</li>
+                                        <li>需要深度數據洞察的商業分析團隊。</li>
+                                        <li>專業內容團隊的協作與產出平台。</li>
+                                        <li>需要更高隱私與安全保障的組織。</li>
+                                        <li>需要處理大量資料來源的研究者。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            gemini_comparison: {
+                title: "Gemini vs Gemini Advanced 比較",
+                headerClass: "gemini-title-bg", // 用於標題背景
+                content: `
+                    <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="official-link">前往 Gemini 官方網站</a>
+                    <table class="w-full details-table">
+                        <thead>
+                            <tr>
+                                <th class="w-1/5">項目</th>
+                                <th class="w-2/5 comparison-header text-emerald-600">Gemini (標準版/免費版)</th>
+                                <th class="w-2/5 comparison-header text-emerald-800">Gemini Advanced</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>簡介</strong></td>
+                                <td>Google 的對話式 AI 服務，由強大的 AI 模型 (如 Gemini Pro) 驅動，提供免費的文字、圖片等多模態互動體驗。</td>
+                                <td>Gemini 的付費訂閱版本，搭載 Google 最頂尖的 AI 模型系列，提供更強大的推理、編碼和創意協作能力，並整合個人化體驗。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>特色</strong></td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>搭載 Gemini Pro 等高效能模型。</li>
+                                        <li>支援文字、圖片輸入與生成。</li>
+                                        <li>自然語言理解與對話。</li>
+                                        <li>基本的寫作、摘要、翻譯、問答能力。</li>
+                                        <li>可透過 gemini.google.com 或 App 存取。</li>
+                                        <li>部分 Google 應用程式整合 (逐步推出)。</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li><strong>搭載 Google 最頂尖的 AI 模型系列，包括：</strong>
+                                            <ul class="list-disc list-inside ml-4">
+                                                <li><strong>Gemini 2.5 Pro:</strong> 提供頂級效能，支援進階功能如 Canvas (可能指擴展的工作空間或創意工具整合) 及 Veo2 (先進的影片生成技術)。</li>
+                                                <li><strong>Gemini 2.5 Flash:</strong> 為需要極致速度和效率的任務而設計的輕量化模型。</li>
+                                                <li><strong>Gemini 2.0 Flash:</strong> 另一款高效能的輕量化模型選項。</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>個人化 (Personalization):</strong> 提供更貼近使用者習慣與偏好的互動體驗。</li>
+                                        <li><strong>極強的推理能力：</strong>處理複雜指令和多步驟任務。</li>
+                                        <li><strong>進階編碼能力：</strong>產生、解釋、除錯程式碼。</li>
+                                        <li><strong>更長的情境脈絡理解：</strong>處理更長文件和對話。</li>
+                                        <li><strong>卓越的創意生成：</strong>高品質寫作、內容發想。</li>
+                                        <li><strong>更深入的 Google Workspace 整合</strong> (如 Gmail, Docs，逐步推出)。</li>
+                                        <li>優先存取新功能。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>限制</strong></td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>可能會有使用頻率或查詢長度限制。</li>
+                                        <li>與 Advanced 相比，模型能力較基礎。</li>
+                                        <li>部分進階功能無法使用。</li>
+                                        <li>AI 生成內容仍需查核。</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>需要付費訂閱 Google One AI Premium。</li>
+                                        <li>對網路連線有要求。</li>
+                                        <li>AI 生成內容仍需查核，不保證完全準確。</li>
+                                        <li>部分最新功能可能仍在實驗階段。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>操作說明</strong></td>
+                                <td>
+                                    <ol class="list-decimal list-inside">
+                                        <li>前往 gemini.google.com 或開啟 Gemini App。</li>
+                                        <li>登入 Google 帳戶。</li>
+                                        <li>在輸入框中輸入文字或上傳圖片提問/互動。</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol class="list-decimal list-inside">
+                                        <li>訂閱 Google One AI Premium。</li>
+                                        <li>前往 gemini.google.com 或 App，確保切換至 "Advanced" 模式。</li>
+                                        <li>輸入更複雜的提示，利用其進階模型 (如 2.5 Pro, 2.5 Flash) 的能力。</li>
+                                        <li>體驗個人化設定帶來的優化互動。</li>
+                                        <li>在支援的 Workspace 應用中使用整合功能。</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>應用建議</strong></td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>日常問題查詢、快速獲取資訊。</li>
+                                        <li>簡單的文本生成、翻譯、摘要。</li>
+                                        <li>學習新知、腦力激盪初步想法。</li>
+                                        <li>個人助理性質的任務。</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-disc list-inside">
+                                        <li>處理複雜的研究與分析任務。</li>
+                                        <li>專業級內容創作 (報告、長文、程式碼、影片腳本)。</li>
+                                        <li>深度學習與個人化輔導。</li>
+                                        <li>需要高度創意和精確性的工作。</li>
+                                        <li>作為強大的程式設計夥伴，利用進階編碼功能。</li>
+                                        <li>制定詳細的商業策略或計畫，利用其強大推理能力。</li>
+                                        <li>需要快速回應且高效能的 AI 互動 (使用 Flash 模型)。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            aistudio: {
+                title: "Google AI Studio 詳細介紹",
+                headerClass: "aistudio-title-bg", // 用於標題背景
+                content: `
+                    <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="official-link">前往 Google AI Studio 官方網站</a>
+                    <table class="w-full details-table">
+                        <tbody>
+                            <tr><th class="w-1/4">項目</th><th>說明</th></tr>
+                            <tr><td><strong>簡介</strong></td><td>一個基於網路的開發者工具，可以讓開發者快速原型設計和建構由 Google 大型語言模型 (如 Gemini 系列模型) 驅動的應用程式。提供友善的介面來實驗提示和模型設定。</td></tr>
+                            <tr><td><strong>特色</strong></td><td>
+                                <ul class="list-disc list-inside">
+                                    <li><strong>快速原型製作：</strong>提供直覺的介面來測試和調整模型提示 (Prompt Engineering)。</li>
+                                    <li><strong>支援 Gemini Pro 和其他模型：</strong>可選擇不同的 Google AI 模型進行實驗 (如 Gemini Pro, Gemini Pro Vision)。</li>
+                                    <li><strong>Gemini 2.0 Flash Preview Image Generation：</strong>整合強大的圖像生成與修圖功能。</li>
+                                    <li><strong>API 金鑰產生：</strong>方便將原型轉換為實際應用程式，並整合到自己的程式碼中 (透過 Vertex AI 或 Gemini API)。</li>
+                                    <li><strong>多種提示類型：</strong>支援自由格式提示 (Freeform)、結構化提示 (Structured) 和聊天提示 (Chat)。</li>
+                                    <li><strong>調整模型參數：</strong>可以調整溫度 (temperature)、候選詞數量 (topK/topP)、最大輸出 token 等參數來影響輸出結果的創意性與確定性。</li>
+                                    <li><strong>範例提示庫：</strong>提供多種範例提示，幫助使用者快速上手。</li>
+                                    <li><strong>Stream 功能：</strong>支援模型回應的串流輸出，提升互動即時性。</li>
+                                    <li><strong>Video Gen 功能：</strong>整合影片生成能力 (例如使用 Veo 模型)，擴展創意應用範圍。</li>
+                                    <li><strong>Starter apps：</strong>提供預建的應用程式範本，加速開發流程。</li>
+                                    <li><strong>影音逐字稿 (SRT格式)：</strong>支援生成影片或音訊內容的字幕檔案。</li>
+                                    <li><strong>多語並列逐字稿：</strong>能夠產生包含多種語言對照的逐字稿內容。</li>
+                                </ul>
+                            </td></tr>
+                            <tr><td><strong>限制</strong></td><td>
+                                <ul class="list-disc list-inside">
+                                    <li>需要 Google 帳戶。進階使用和部署通常需要 Google Cloud Platform (GCP) 帳戶及設定。</li>
+                                    <li>免費層級有使用量限制 (API calls per minute)。大量使用需付費。</li>
+                                    <li>主要面向開發者和具有一定技術背景的使用者。</li>
+                                    <li>模型行為和輸出仍需仔細測試和評估，以確保安全和負責任的 AI 應用。</li>
+                                    <li>部分最新模型或功能可能首先在 Vertex AI 上提供。</li>
+                                </ul>
+                            </td></tr>
+                            <tr><td><strong>操作說明</strong></td><td>
+                                <ol class="list-decimal list-inside">
+                                    <li>前往 Google AI Studio 網站 (aistudio.google.com) 並使用 Google 帳戶登入。</li>
+                                    <li>建立新的提示 (例如 "Create new prompt" 或 "Create new chat prompt")。</li>
+                                    <li>(可選) 在左側選擇要使用的模型 (例如 Gemini Pro, Gemini 2.0 Flash Preview Image Generation)。</li>
+                                    <li>在提示編輯器中輸入您的指令或問題。對於聊天提示，可以進行多輪對話。</li>
+                                    <li>點擊「執行」(Run) 按鈕觀察模型的輸出，體驗 Stream 即時回應。</li>
+                                    <li>在右側面板調整模型參數 (如 Temperature, Top K, Top P) 以優化結果。</li>
+                                    <li>探索 Starter apps 以快速啟動專案。</li>
+                                    <li>滿意後，可以點擊「取得程式碼」(Get code) 來獲得 Python, JavaScript, cURL 等語言的 API 呼叫範例。</li>
+                                    <li>若要進行更大量或正式的部署，通常會搭配 Vertex AI 平台。</li>
+                                </ol>
+                            </td></tr>
+                            <tr><td><strong>應用建議</strong></td><td>
+                                <ul class="list-disc list-inside">
+                                    <li><strong>聊天機器人原型開發：</strong>快速建立和測試各種用途的聊天機器人原型。</li>
+                                    <li><strong>內容生成工具：</strong>開發自動撰寫文章、摘要、翻譯、產品描述等工具。</li>
+                                    <li><strong>程式碼生成與輔助：</strong>建立協助開發者編寫、解釋或轉換程式碼的工具。</li>
+                                    <li><strong>教育應用：</strong>開發互動式學習工具、自動批改輔助或個人化問答系統。</li>
+                                    <li><strong>客製化 AI 解決方案：</strong>為特定業務需求打造 AI 驅動的應用，例如客服自動化、資料分析等。</li>
+                                    <li><strong>創意寫作輔助：</strong>產生故事點子、角色描述、詩歌等。</li>
+                                    <li><strong>圖像與影片應用：</strong>開發分析圖片內容、產生圖片描述、修圖或生成短影片、製作影音逐字稿的應用。</li>
+                                    <li><strong>利用 Starter apps 快速部署常見應用場景。</strong></li>
+                                </ul>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                `
+            }
+        };
+
+        const modal = document.getElementById('details-modal');
+        const modalHeader = document.getElementById('modal-header');
+        const modalTitleText = document.getElementById('modal-title-text');
+        const modalBody = document.getElementById('modal-body');
+        const mainContainer = document.getElementById('main-container');
+
+        function showDetails(aiKey) {
+            if (aiData[aiKey]) {
+                // 更新彈出視窗標題和背景色
+                modalTitleText.textContent = aiData[aiKey].title;
+                modalHeader.className = 'modal-header text-center'; // 重置 class 並確保 text-center
+                if (aiData[aiKey].headerClass) {
+                    modalHeader.classList.add(aiData[aiKey].headerClass);
+                }
+
+                // 填充彈出視窗內容
+                modalBody.innerHTML = aiData[aiKey].content;
+                modal.style.display = "block"; // 顯示彈出視窗
+                mainContainer.style.filter = 'blur(5px)'; // 模糊背景
+                document.body.style.overflow = 'hidden'; // 防止背景滾動
+            }
+        }
+
+        function closeDetailsModal() {
+            modal.style.display = "none"; // 隱藏彈出視窗
+            modalBody.innerHTML = ""; // 清空內容
+            mainContainer.style.filter = 'none'; // 移除背景模糊
+            document.body.style.overflow = 'auto'; // 恢復背景滾動
+        }
+
+        // 點擊彈出視窗外部區域也可關閉
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeDetailsModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
